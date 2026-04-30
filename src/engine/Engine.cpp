@@ -1,3 +1,4 @@
+#include "engine/Drawing.hpp"
 #include <engine/Engine.hpp>
 
 Engine::Engine() {}
@@ -8,13 +9,15 @@ Engine::~Engine() {
 
 bool Engine::init() {
     if (!SDL_Init(SDL_INIT_VIDEO)) return false;
-    
+
     window = SDL_CreateWindow(title.c_str(), resolution[0], resolution[1], 0);
     if (!window) return false;
 
     renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) return false;
-    
+
+    draw = Drawing(renderer);
+
     running = true;
     return true;
 }

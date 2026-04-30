@@ -5,5 +5,14 @@ void Game::update(float dt) {
 }
 
 void Game::render() {
-    // your code here
+    draw.DrawRectangle(200, 200, 200, 200, RED);
+    draw.DrawTriangle(
+        {0, 0},
+        {100, 100},
+        {0, 100},
+        BLUE
+    );
+
+    draw.DrawCircle(100, 400, 400, GREEN);
+    draw.EndDrawing();
 }
