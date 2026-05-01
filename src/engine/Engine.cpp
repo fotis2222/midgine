@@ -1,4 +1,3 @@
-#include "engine/Drawing.hpp"
 #include <engine/Engine.hpp>
 
 Engine::Engine() {}
@@ -16,7 +15,7 @@ bool Engine::init() {
     renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) return false;
 
-    draw = Drawing(renderer);
+    draw = std::make_unique<Drawing>(renderer);
 
     running = true;
     return true;

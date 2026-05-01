@@ -1,7 +1,20 @@
+#include "SDL3/SDL_render.h"
 #include <engine/Drawing.hpp>
 
 Drawing::Drawing(SDL_Renderer *renderer) {
     this->renderer = renderer;
+}
+
+void Drawing::ClearBG(Color color) {
+    SDL_SetRenderDrawColor(
+        renderer,
+        static_cast<Uint8>(color[0]),
+        static_cast<Uint8>(color[1]),
+        static_cast<Uint8>(color[2]),
+        static_cast<Uint8>(color[3])
+    );
+
+    SDL_RenderClear(renderer);
 }
 
 void Drawing::DrawRectangle(float x, float y, float w, float h, Color color) {

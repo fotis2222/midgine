@@ -1,9 +1,11 @@
 #pragma once
 #include <SDL3/SDL.h>
 #include <array>
-#include <cstddef>
+#include <memory>
 #include <string>
 #include <engine/Drawing.hpp>
+#include <engine/Engine.hpp>
+#include <memory>
 
 class Engine {
     public:
@@ -14,7 +16,7 @@ class Engine {
         void shutdown();
         void set_resolution(const std::array<int, 2>& resolution);
         void set_title(const std::string& t);
-        Drawing draw = NULL;
+        std::unique_ptr<Drawing> draw = nullptr;
     protected:
         virtual void update(float dt);
         virtual void render();
